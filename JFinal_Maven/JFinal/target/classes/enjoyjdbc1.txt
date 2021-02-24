@@ -1,0 +1,26 @@
+#sql("jdbc")
+    select org_name from blms_org where org_id = ?
+#end
+
+#sql("jdbc1")
+    select org_name from blms_org where org_id = #para(id)
+#end
+
+#sql("jdbc2")
+    select #(columns) from blms_org where org_id = #para(id)
+#end
+
+#sql("search")
+    select #(col) from blms_org where org_id = #para(id)
+#end
+
+#sql("search1")
+    select org_name from blms_org
+    where 1 = 1
+    #if(id)
+        and org_id = #para(id)
+    #end
+    #if(parent)
+        and parent_org_id = #para(parent)
+    #end
+#end

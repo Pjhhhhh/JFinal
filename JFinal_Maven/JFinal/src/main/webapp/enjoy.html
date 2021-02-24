@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Enjoy</title>
+</head>
+<body>
+    <!-- 普通字符串展示 -->
+    <h4>普通字符串展示:</h4>
+         #("Hello~")<br>
+         hello+2=#("hello"+2)<br>
+         将hello前两个字母打印： #("hello".substring(0, 2))<br>
+    <hr>
+    
+    <!-- 普通运算 -->
+    <h4>普通运算:</h4>
+        1+1=#(1+1)<br>
+        1==1：#(1==1)<br>
+        三元运算：#(1==1?"相等":"不相等")
+    <hr>
+    
+    <!-- 从对象取值 -->
+    <h4>从对象取值:</h4>
+        #(user.name)
+        #(user.age)
+        #(user.getName())
+        #(user.getAge())
+    <hr>
+    
+    <!-- if条件判断 -->
+    <h4>if条件判断: </h4>
+        #if(num == 0)
+            num等于0，呵呵
+        #else if(num == 1)
+            num等于1，哈哈
+        #else
+            num不等于0也不等于1，啦啦啦
+        #end
+    <hr>
+    
+    <!-- 循环从list取值，names为后台传来的参数 -->
+    <h4>循环从list取值: </h4>
+        #for(lis:list)
+            #(lis)
+        #end
+    <hr>
+    <!-- 从map取值 -->
+    <h4>从map取值: </h4>
+        key1: #(map["key1"])<br>
+        key2: #(map.key2)<br>
+        key1: #(map.get("key1"))<br>
+        所有的key: #(map.keySet())<br>
+        遍历map: 
+            #for(key:map.keySet())
+                #(map.get(key))
+            #end
+    <hr>
+    
+    <!-- 定义map并输出 -->
+    <h4>定义map并输出: </h4>
+        #set(myMap={"张三":22,"李四":21})
+        #(myMap)<br>
+        #(myMap.put("王二",20))
+        #(myMap)<br>
+    <hr>
+    
+    <!-- 空合并安全取值调用操作符 -->
+    <h4>空合并安全取值调用操作符: </h4>
+        #(para ??)它是空值
+    <hr>
+    
+
+</body>
+</html>

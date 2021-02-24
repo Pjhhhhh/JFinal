@@ -1,0 +1,40 @@
+#("HELLO")
+#("hello+2")
+#("hello".substring(0, 2))
+
+#(1 + 1)
+#(1 == 1)
+#(1 == 1 ? "equal" : "error")
+
+#(user.name)
+#(user.age)
+#(user.getName())
+#(user.getAge())
+
+
+#if (num == 0)
+    "yes"
+#else if (num > 0)
+    "oh"
+#else
+    "get out"
+#end
+
+#for (lis : list)
+    #(lis)
+#end
+
+#(map["key1"])
+#(map.key2)
+#(map.get("key1"))
+#(map.keySet())
+#for (key : map.keySet())
+    #(map.get(key))
+#end
+
+#set(q = {"Î¤ÖÇº£" : 3})
+#(q)
+#(q.put("pjh", 22))
+#(q)
+
+#(para ??)

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Form2</title>
+    <script type="text/javascript" src="/scripts/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#submid").click(function() {
+                var targetUrl = $("#addForm").attr("action");
+                var data = $("#addForm").serialize();
+                $.ajax({	
+                	type: "post",
+                	url: targetUrl,
+                	cache: false,
+                	data: data,
+                    dataType: "json",
+                	success: function(ret) {
+                		if (ret.state == "ok") {
+                			console.log(ret);
+                		    var trStr = "";
+                		    $.each(ret.data, function(i, val) {
+                		    	trStr += "<tr>";
+                                trStr += "<td>" + val.id + "</td>";
+                                trStr += "<td>" + val.name + "</td>";
+                                trStr += "<td>" + val.state + "</td>";
+                                trStr += "</tr>";
+                		    });
+                		    /*for (var i = 0; i < ret.data.length; i++) {
+                		    	  trStr += "<tr>";
+                		    	  trStr += "<td>" + ret.data[i].id + "</td>";
+                		    	  trStr += "<td>" + ret.data[i].name + "</td>";
+                		    	  trStr += "<td>" + ret.data[i].state + "</td>";
+                		    	  trStr += "</tr>";
+                		    }*/
+                		    $("#tbody").html(trStr);
+                		}
+                	},
+                	error: function() {
+                		alert("fail");
+                	}
+                })
+        	});
+        });
+    </script>
+  </head>
+  <body>
+      <form id="addForm" action="/another" method="post">
+        <input type="text" name="id" placeholder="id" />
+        <input type="text" name="name" placeholder="名" />
+      </form>
+      <button type="button" id="submid">提交</button>
+      <table id="mainTable">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>名</th>
+            <th>state</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+      </table>
+  </body>
+</html>

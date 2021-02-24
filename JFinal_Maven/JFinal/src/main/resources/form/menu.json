@@ -1,0 +1,22 @@
+
+[
+    {
+        "id": "1",
+        "iconCls": "fa fa-plus-circle",
+        "text": "我的项目",
+        "url": "pages/myprojects.html"
+    }, 
+    {
+        "id": "2",
+        "iconCls": "fa fa-check-circle",
+        "text": "项目发布",
+        "url": "pages/1.html"
+    }, 
+    {
+        "id": "3",
+        "iconCls": "fa fa-play-circle-o",
+        "text": "项目运行",
+        "url": "pages/1.html"
+    }
+]
+            

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <script src="../scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="../scripts/miniui/miniui.js" type="text/javascript"></script>
+    <link href="../scripts/miniui/themes/default/miniui.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+  <form action="/form1/login">
+    <table class="form-table" border="0" cellpadding="1" cellspacing="2">
+      <tr>
+        <td class="form-label" style="width:60px;">姓名：</td>
+        <td style="width:150px">
+          <input name="name" class="mini-textbox" />
+        </td>
+        <td class="form-label" style="width:60px;">地址：</td>
+        <td style="width:xt150px">
+          <input name="addr" class="mini-textbox" />
+        </td>
+      </tr>
+      <tr>
+        <td class="form-label">性别：</td>
+        <td>
+          <input name="gender" class="mini-radiobuttonlist" data="[{id: 1, text: '男'},
+          {id: 2, text: '女'}]"/>
+        </td>
+        <td class="form-label">年龄：</td>
+        <td>
+          <input name="age" class="mini-spinner" />
+        </td>
+      </tr>
+      <tr>
+        <td class="form-label">备注：</td>
+        <td colspan="3">
+          <input name="remarks" class="mini-textarea" style="width:343px;height:60px;" />
+        </td>
+      </tr>
+    </table>
+    <input type="submit" formmethod="post" value="submit" />
+    <script>
+      function onUserNameValidation(e) {
+    	  if (e.isValid) {
+    		  if (isEmail(e.value) == false) {
+    			  e.errorText = "必须输入邮件地址";
+    			  e.isValid = false;
+    		  }
+    	  }
+      }
+      var form = new mini.Form("#form1");
+      form.validate();
+      $.ajax({
+    	  url: "../data/FormService.aspx?method=LoadData",
+    	  type: "post",
+    	  success: function(text) {
+    		  var data = mini.decode(text);
+    		  form.setData(data);
+    	  }
+      });
+      var form = new mini.Form("#form1");
+      var data = form.getData();
+      var json = mini.encode(data);
+      $.ajax({
+    	  url: "../data/FormService.aspx?method=SaveData",
+    	  type: "post",
+    	  data: { submitData: json },
+    	  success: function (text) {
+    	      alert("提交成功，返回结果:" + text);
+    	  }
+      });
+      form.clear();
+      form.reset();
+    </script>
+  </form>
+  </body>
+</html>
